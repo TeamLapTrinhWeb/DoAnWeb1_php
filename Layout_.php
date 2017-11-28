@@ -48,18 +48,30 @@
 </a>
   <div class="navbar-inner">
     <a class="brand" href="TrangDetail.php"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-    </form>
+		<form class="form-inline navbar-search" method="get" action="TrangTimKiem.php" id="frmTimKiem" >
+			<input name="txtTimKiem" id="srchFld" class="srchTxt" type="text" />
+			
+			<select class="srchTxt" form="frmTimKiem" name="TenNSX">
+				<?php
+					$sql = "select * from nhasx";
+					$rs = load($sql);
+					while ($row = $rs->fetch_assoc()) :
+				?>
+					<option><?= $row["TenNhaSX"] ?></option>
+				<?php endwhile ?>
+			</select>
+
+			<select class="srchTxt" form="frmTimKiem" name="TenLMA">
+				<?php
+					$sql = "select * from loaimayanh";
+					$rs = load($sql);
+					while ($row = $rs->fetch_assoc()) :
+				?>
+					<option><?= $row["tenLoaiMayAnh"] ?></option>
+				<?php endwhile ?>
+			</select>
+			<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		</form>
     <ul id="topMenu" class="nav pull-right">
     	<li class="">
 	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
