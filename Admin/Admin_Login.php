@@ -5,7 +5,8 @@
 	}
 
 	require_once '../lib/db.php';
-
+	$show_alert = 0;
+	
 	if (isset($_POST["btnLogin"])) {
 		$username = $_POST["txtUserName"];
 		$password = $_POST["txtPassword"];
@@ -18,7 +19,7 @@
 			$_SESSION["dang_nhap_chua"] = 1;
 			header("Location: TrangAdmin.php");
 		} else {
-			// sinh viên xử lý show_alert
+			$show_alert = 1;
 		}
 	}
 ?>
@@ -36,6 +37,12 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
+				<?php 
+					if ($show_alert == 1) :
+				 ?>
+				 	<div class="alert alert-danger" role="alert">Bạn đăng nhập chưa đúng</div>
+				 <?php endif; ?>	
+
 				<form method="post" action="">
 					<div class="form-group">
 						<label for="txtUserName">Tên đăng nhập</label>

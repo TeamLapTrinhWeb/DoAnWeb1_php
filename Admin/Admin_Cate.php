@@ -32,17 +32,17 @@
             <table class="table table-hover">
                 <tbody>
                 <?php
-                    $sql = "select * from nhasx";
+                    $sql = "select * from loaimayanh";
                     $rs = load($sql);
                     while ($row = $rs->fetch_assoc()) :
                 ?>
                         <tr>
-                            <td><?= $row["TenNhaSX"] ?></td>
+                            <td><?= $row["tenLoaiMayAnh"] ?></td>
                             <td class="text-right">
-                                <a class="btn btn-default btn-xs" href="TrangAdmin_Edit.php?id=<?= $row["id"] ?>" role="button">
+                                <a class="btn btn-default btn-xs" href="TrangAdminCate_Edit.php?id=<?= $row["id"] ?>" role="button">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="Admin_Delete.php?id=<?= $row["id"] ?>" role="button">
+                                <a class="btn btn-danger btn-xs" href="TrangAdminCate_Delete.php?id=<?= $row["id"] ?>" role="button">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>

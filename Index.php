@@ -26,15 +26,14 @@
 									endwhile;
 								else :
 							?>
-								<div class="thumbnail">
-									<div class="caption"><p>Trống </p></div>
-								</div>
+							<div class="thumbnail">
+								<div class="caption"><p>Trống </p></div>
+							</div>
 							<?php
 								endif;
 							?>
 						</ul>
 					</div>
-
 					<div class="item">
 						<ul class="thumbnails">
 							<?php
@@ -43,23 +42,23 @@
 								if ($rs->num_rows > 0) :
 									while ($row = $rs->fetch_assoc()) :
 							?>
-								<li class="span2">
-									<div class="thumbnail">
-										<i class="tag"></i>
-										<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
-										<div class="caption">
-											<h5><?= $row["TenSP"] ?></h5>
-											<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
-										</div>
+							<li class="span2">
+								<div class="thumbnail">
+									<i class="tag"></i>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<div class="caption">
+										<h5><?= $row["TenSP"] ?></h5>
+										<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
 									</div>
-								</li>
+								</div>
+							</li>
 							<?php
 									endwhile;
 								else :
 							?>
-								<div class="thumbnail">
-									<div class="caption"><p>Trống </p></div>
-								</div>
+							<div class="thumbnail">
+								<div class="caption"><p>Trống </p></div>
+							</div>
 							<?php
 								endif;
 							?>
@@ -100,15 +99,14 @@
 									endwhile;
 								else :
 							?>
-								<div class="thumbnail">
-									<div class="caption"><p>Trống </p></div>
-								</div>
+							<div class="thumbnail">
+								<div class="caption"><p>Trống </p></div>
+							</div>
 							<?php
 								endif;
 							?>
 						</ul>
 					</div>
-
 					<div class="item">
 						<ul class="thumbnails">
 							<?php
@@ -117,23 +115,23 @@
 								if ($rs->num_rows > 0) :
 									while ($row = $rs->fetch_assoc()) :
 							?>
-								<li class="span2">
-									<div class="thumbnail">
-										<i class="tag"></i>
-										<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
-										<div class="caption">
-											<h5><?= $row["TenSP"] ?></h5>
-											<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
-										</div>
+							<li class="span2">
+								<div class="thumbnail">
+									<i class="tag"></i>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<div class="caption">
+										<h5><?= $row["TenSP"] ?></h5>
+										<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
 									</div>
-								</li>
+								</div>
+							</li>
 							<?php
 									endwhile;
 								else :
 							?>
-								<div class="thumbnail">
-									<div class="caption"><p>Trống </p></div>
-								</div>
+							<div class="thumbnail">
+								<div class="caption"><p>Trống </p></div>
+							</div>
 							<?php
 								endif;
 							?>
@@ -146,7 +144,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<div class="well well-small">
 		<h4>Sản phẩm xem nhiều nhất </h4>
 		<div class="row-fluid">
@@ -174,15 +172,14 @@
 									endwhile;
 								else :
 							?>
-								<div class="thumbnail">
-									<div class="caption"><p>Trống </p></div>
-								</div>
+							<div class="thumbnail">
+								<div class="caption"><p>Trống </p></div>
+							</div>
 							<?php
 								endif;
 							?>
 						</ul>
 					</div>
-
 					<div class="item">
 						<ul class="thumbnails">
 							<?php
@@ -191,28 +188,28 @@
 								if ($rs->num_rows > 0) :
 									while ($row = $rs->fetch_assoc()) :
 							?>
-								<li class="span2">
-									<div class="thumbnail">
-										<i class="tag"></i>
-										<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
-										<div class="caption">
-											<h5><?= $row["TenSP"] ?></h5>
-											<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
-										</div>
+							<li class="span2">
+								<div class="thumbnail">
+									<i class="tag"></i>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<div class="caption">
+										<h5><?= $row["TenSP"] ?></h5>
+										<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
 									</div>
-								</li>
+								</div>
+							</li>
 							<?php
 									endwhile;
 								else :
 							?>
-								<div class="thumbnail">
-									<div class="caption"><p>Trống </p></div>
-								</div>
+							<div class="thumbnail">
+								<div class="caption"><p>Trống </p></div>
+							</div>
 							<?php
 								endif;
 							?>
 						</ul>
-					</div>				
+					</div>
 				</div>
 				<a class="left carousel-control" href="#featured2" data-slide="prev">‹</a>
 				<a class="right carousel-control" href="#featured2" data-slide="next">›</a>
@@ -220,10 +217,83 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
+<!-- <div class="span9">
+	<div id="featured1" class="carousel slide">
+<h4>Latest Products </h4>
+<ul class="thumbnails">
+	<li class="span3">
+		<div class="thumbnail">
+			<a  href="product_details.html"><img src="themes/images/products/6.jpg" alt=""/></a>
+			<div class="caption">
+				<h5>Product name</h5>
+				<p>
+					Lorem Ipsum is simply dummy text.
+				</p>
+				
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		</div>
+	</li>
+	<li class="span3">
+		<div class="thumbnail">
+			<a  href="product_details.html"><img src="themes/images/products/7.jpg" alt=""/></a>
+			<div class="caption">
+				<h5>Product name</h5>
+				<p>
+					Lorem Ipsum is simply dummy text.
+				</p>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		</div>
+	</li>
+	<li class="span3">
+		<div class="thumbnail">
+			<a  href="product_details.html"><img src="themes/images/products/8.jpg" alt=""/></a>
+			<div class="caption">
+				<h5>Product name</h5>
+				<p>
+					Lorem Ipsum is simply dummy text.
+				</p>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		</div>
+	</li>
+	<li class="span3">
+		<div class="thumbnail">
+			<a  href="product_details.html"><img src="themes/images/products/9.jpg" alt=""/></a>
+			<div class="caption">
+				<h5>Product name</h5>
+				<p>
+					Lorem Ipsum is simply dummy text.
+				</p>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		</div>
+	</li>
+	<li class="span3">
+		<div class="thumbnail">
+			<a  href="product_details.html"><img src="themes/images/products/10.jpg" alt=""/></a>
+			<div class="caption">
+				<h5>Product name</h5>
+				<p>
+					Lorem Ipsum is simply dummy text.
+				</p>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		</div>
+	</li>
+	<li class="span3">
+		<div class="thumbnail">
+			<a  href="product_details.html"><img src="themes/images/products/11.jpg" alt=""/></a>
+			<div class="caption">
+				<h5>Product name</h5>
+				<p>
+					Lorem Ipsum is simply dummy text.
+				</p>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		</div>
+	</li>
+</ul>
+</div>
+</div> -->
