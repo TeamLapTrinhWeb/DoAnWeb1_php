@@ -1,8 +1,17 @@
 <?php 
+	ob_start();
+	session_start();
 	require_once "lib/db.php";
- ?>
 
- <!DOCTYPE html>
+	if (!isset($_SESSION["User_ID"])) {
+        $_SESSION["User_ID"] = 0;
+    }
+    $show = 1;
+    if ($_SESSION["User_ID"] == 0) {
+        $show = 0;
+    }
+ ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -71,14 +80,27 @@
 			</select>
 			<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 		</form>
-		
 			<ul id="topMenu" class="nav pull-right">
-				<li class="">
-					<a href="TrangDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Signin</span></a>
-				</li>
-				<li class="">
-					<a href="TrangDangKy.php" style="padding-right:0"><span class="btn btn-large btn-success">Signup</span></a>
-				</li>
+				<?php 
+					if ($show == 0) :
+				 ?>
+					<li class="">
+						<a href="TrangDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Đăng nhập</span></a>
+					</li>
+					<li class="">
+						<a href="TrangDangKy.php" style="padding-right:0"><span class="btn btn-large btn-success">Đăng ký</span></a>
+					</li>
+				<?php else : ?>
+					<li class="">
+						<a style="padding-right:0"><span class="btn btn-large btn-success"><?= $_SESSION["User"]->tenNguoiDung ?></span></a>
+					</li>
+					<li class="">
+						<a href="TrangDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">thông tin cá nhân</span></a>
+					</li>
+					<li class="">
+						<a href="ThoatDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Thoát</span></a>
+					</li>	
+				<?php endif; ?>
 			</ul>
 	</div>
 </div>
@@ -226,6 +248,5 @@
 	</div> -->
 </div>
 <span id="themesBtn"></span>
-<script type="text/javascript" src="assets/js.js"></script>
-</body>
+<script src='https://www.google.com/recaptcha/api.js'></script></body>
 </html>

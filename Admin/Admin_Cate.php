@@ -26,6 +26,16 @@
                         Thêm loại máy ảnh
                     </a>
                 </div>
+                <div class="panel-heading">
+                    <a href="TrangAdminProducts.php">
+                        Danh sách các sản phẩm
+                    </a>
+                </div>
+                <div class="panel-heading">
+                    <a href="TrangAdmin_Add_Products.php">
+                        Thêm sản phẩm
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -42,7 +52,7 @@
                                 <a class="btn btn-default btn-xs" href="TrangAdminCate_Edit.php?id=<?= $row["id"] ?>" role="button">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="TrangAdminCate_Delete.php?id=<?= $row["id"] ?>" role="button">
+                                <a class="btn btn-danger btn-xs" href="AdminCate_Delete.php?id=<?= $row["id"] ?>" role="button">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </a>
                             </td>

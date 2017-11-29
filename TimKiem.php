@@ -10,9 +10,11 @@
 								$tenSP = $_GET["txtTimKiem"];
 								$tenNSX = $_GET["TenNSX"];
 								$tenLoai = $_GET["TenLMA"];
-								$sql = "SELECT * 
-										FROM sanpham JOIN nhasx ON 'sanpham.maNSX' = 'nhasx.id' JOIN loaimayanh ON 'sanpham.maLoai' = 'loaimayanh.id'
-										WHERE 'sanpham.TenSP' = '$tenSP' AND 'nhasx.TenNhaSX' = '$tenNSX' AND 'loaimayanh.tenLoaiMayAnh' = '$tenLoai'";
+								$sql = "select * 
+										from sanpham join nhasx on sanpham.maNSX = nhasx.id join loaimayanh on sanpham.maLoai = loaimayanh.id 
+										where sanpham.TenSP = '$tenSP' and nhasx.TenNhaSX = '$tenNSX' and loaimayanh.tenLoaiMayAnh = '$tenLoai'";
+
+								
 								$rs = load($sql);
 								if ($rs->num_rows > 0) :
 									while ($row = $rs->fetch_assoc()) :
@@ -40,8 +42,6 @@
 						</ul>
 					</div>
 				</div>
-				<a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
-				<a class="right carousel-control" href="#featured" data-slide="next">›</a>
 			</div>
 		</div>
 	</div>

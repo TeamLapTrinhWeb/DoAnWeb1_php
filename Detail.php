@@ -7,7 +7,7 @@
 	<div class="row">
 		<?php
 			$id = $_GET["id"];
-			$sql = "select * from sanpham where id = $id";
+			$sql = "select * from sanpham join loaimayanh on sanpham.maLoai = loaimayanh.id join nhasx on sanpham.maNSX = nhasx.id where sanpham.id = $id ";
 			$rs = load($sql);
 			if ($rs->num_rows > 0) :
 				while ($row = $rs->fetch_assoc()) :
@@ -64,10 +64,10 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr class="techSpecRow"><th colspan="2">Product Details</th></tr>
-						<tr class="techSpecRow"><td class="techSpecTD1">Brand: </td><td class="techSpecTD2">Fujifilm</td></tr>
-						<tr class="techSpecRow"><td class="techSpecTD1">Model:</td><td class="techSpecTD2"><?= $row["TenSP"] ?></td></tr>
+						<tr class="techSpecRow"><td class="techSpecTD1">Nhà sản xuất: </td><td class="techSpecTD2"><?= $row["TenNhaSX"] ?></td></tr>
+						<tr class="techSpecRow"><td class="techSpecTD1">Tên sản phẩm:</td><td class="techSpecTD2"><?= $row["TenSP"] ?></td></tr>
 						<tr class="techSpecRow"><td class="techSpecTD1">Xuất xứ:</td><td class="techSpecTD2"><?= $row["xuatXu"] ?></td></tr>
-						<tr class="techSpecRow"><td class="techSpecTD1">Loại:</td><td class="techSpecTD2"><?= $row["loai"] ?></td></tr>
+						<tr class="techSpecRow"><td class="techSpecTD1">Loại:</td><td class="techSpecTD2"><?= $row["tenLoaiMayAnh"] ?></td></tr>
 						<tr class="techSpecRow"><td class="techSpecTD1">Số lượt xem:</td><td class="techSpecTD2"><?= $row["soLuotXem"] ?></td></tr>
 						<tr class="techSpecRow"><td class="techSpecTD1">Số lượng bán:</td><td class="techSpecTD2"><?= $row["soLuongBan"] ?></td></tr>
 						<?php

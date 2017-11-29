@@ -26,6 +26,16 @@
                         Thêm loại máy ảnh
                     </a>
                 </div>
+                <div class="panel-heading">
+                    <a href="TrangAdminProducts.php">
+                        Danh sách các sản phẩm
+                    </a>
+                </div>
+                <div class="panel-heading">
+                    <a href="TrangAdmin_Add_Products.php">
+                        Thêm sản phẩm
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">

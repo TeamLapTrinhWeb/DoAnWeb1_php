@@ -1,5 +1,8 @@
 <?php 
+	
 	session_start();
+	
+	
 	if (!isset($_SESSION["dang_nhap_chua"])) {
 		$_SESSION["dang_nhap_chua"] = 0;
 	}
@@ -17,11 +20,15 @@
 		if ($rs->num_rows > 0) {
 			$_SESSION["current_user"] = $rs->fetch_object();
 			$_SESSION["dang_nhap_chua"] = 1;
-			header("Location: TrangAdmin.php");
+
+				header("Location: TrangAdmin.php");
+			
+			
 		} else {
 			$show_alert = 1;
 		}
 	}
+	
 ?>
 
 <!DOCTYPE html>
