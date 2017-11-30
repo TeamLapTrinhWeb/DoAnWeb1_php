@@ -40,7 +40,12 @@
 					<label class="control-label"><span><?= number_format($row["giaBan"]) ?> vnd</span></label>
 					<div class="controls">
 						<input type="number" class="span1" placeholder="Qty."/>
-						<button type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ hàng <i class=" icon-shopping-cart"></i></button>
+						<?php 
+							if ($_SESSION["User_ID"] == 1) :
+						?>
+							<button type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ hàng <i class=" icon-shopping-cart"></i></button>
+						<?php endif ?>
+
 					</div>
 				</div>
 			</form>
@@ -60,10 +65,10 @@
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane fade active in" id="home">
-				<h4>Product Information</h4>
+				<h4>Thông tin sản phẩm</h4>
 				<table class="table table-bordered">
 					<tbody>
-						<tr class="techSpecRow"><th colspan="2">Product Details</th></tr>
+						<tr class="techSpecRow"><th colspan="2">Chi tiết</th></tr>
 						<tr class="techSpecRow"><td class="techSpecTD1">Nhà sản xuất: </td><td class="techSpecTD2"><?= $row["TenNhaSX"] ?></td></tr>
 						<tr class="techSpecRow"><td class="techSpecTD1">Tên sản phẩm:</td><td class="techSpecTD2"><?= $row["TenSP"] ?></td></tr>
 						<tr class="techSpecRow"><td class="techSpecTD1">Xuất xứ:</td><td class="techSpecTD2"><?= $row["xuatXu"] ?></td></tr>
@@ -108,7 +113,14 @@
 																<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
 																<div class="caption">
 																	<h5><?= $row["TenSP"] ?></h5>
-																	<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
+																	<h4>
+																		<?php 
+																			if ($_SESSION["User_ID"] == 1) :
+																		?>
+																			<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
+																		<?php endif ?>
+																		<span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span>
+																	</h4>
 																</div>
 															</div>
 														</li>
@@ -152,7 +164,14 @@
 																<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
 																<div class="caption">
 																	<h5><?= $row["TenSP"] ?></h5>
-																	<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
+																	<h4>
+																		<?php 
+																			if ($_SESSION["User_ID"] == 1) :
+																		?>
+																			<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
+																		<?php endif ?>
+																		<span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span>
+																	</h4>
 																</div>
 															</div>
 														</li>

@@ -1,4 +1,3 @@
-<!-- Sidebar end=============================================== -->
 <div class="span9">
 	<ul class="breadcrumb">
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
@@ -44,7 +43,15 @@
 							<div class="caption">
 								<h5><?= $row["TenSP"] ?></h5>
 								<p> </p>
-								<h4 style="text-align:center"><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a></h4>
+								<h4 style="text-align:center">
+									<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>"> <i class="icon-zoom-in"></i></a> 
+									<?php 
+										if ($_SESSION["User_ID"] == 1) :
+    								?>
+										<a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> 
+									<?php endif ?>
+									<a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a>
+								</h4>
 							</div>
 						</div>
 					</li>
