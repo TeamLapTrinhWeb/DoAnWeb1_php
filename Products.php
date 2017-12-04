@@ -44,7 +44,7 @@
 								<h5><?= $row["TenSP"] ?></h5>
 								<p> </p>
 								<h4 style="text-align:center">
-									<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>"> <i class="icon-zoom-in"></i></a> 
+									<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
 									<?php 
 										if ($_SESSION["User_ID"] == 1) :
     								?>

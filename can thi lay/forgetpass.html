@@ -1,17 +1,3 @@
-<?php 
-	ob_start();
-	session_start();
-	require_once "lib/db.php";
-	require_once "cart.inc";
-
-	if (!isset($_SESSION["User_ID"])) {
-        $_SESSION["User_ID"] = 0;
-    }
-    $show = 1;
-    if ($_SESSION["User_ID"] == 0) {
-        $show = 0;
-    }
- ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+<!--Less styles -->
+   <!-- Other Less css file //different less files has different color scheam
+	<link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
+	<link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
+	<link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
+	-->
+	<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
+	<script src="themes/js/less.js" type="text/javascript"></script> -->
+	
+<!-- Bootstrap style --> 
     <link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen"/>
     <link href="themes/css/base.css" rel="stylesheet" media="screen"/>
 <!-- Bootstrap style responsive -->	
@@ -33,117 +29,181 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
-    <!-- <link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css">
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
 <div id="header">
 <div class="container">
+<div id="welcomeLine" class="row">
+	<div class="span6">Welcome!<strong> User</strong></div>
+	<div class="span6">
+	<div class="pull-right">
+		<a href="product_summary.html"><span class="">Fr</span></a>
+		<a href="product_summary.html"><span class="">Es</span></a>
+		<span class="btn btn-mini">En</span>
+		<a href="product_summary.html"><span>&pound;</span></a>
+		<span class="btn btn-mini">$155.00</span>
+		<a href="product_summary.html"><span class="">$</span></a>
+		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+	</div>
+	</div>
+</div>
 <!-- Navbar ================================================== -->
 <div id="logoArea" class="navbar">
-	<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-	</a>
-	<div class="navbar-inner">
-		<a class="brand" href="TrangDetail.php"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="get" action="TrangTimKiem.php" id="frmTimKiem" >
-			<input name="txtTimKiem" id="srchFld" class="srchTxt" type="text" />
-			
-			<select class="srchTxt" form="frmTimKiem" name="TenNSX">
-				<?php
-					$sql = "select * from nhasx";
-					$rs = load($sql);
-					while ($row = $rs->fetch_assoc()) :
-				?>
-				<option><?= $row["TenNhaSX"] ?></option>
-				<?php endwhile ?>
-			</select>
-			<select class="srchTxt" form="frmTimKiem" name="TenLMA">
-				<?php
-					$sql = "select * from loaimayanh";
-					$rs = load($sql);
-					while ($row = $rs->fetch_assoc()) :
-				?>
-				<option><?= $row["tenLoaiMayAnh"] ?></option>
-				<?php endwhile ?>
-			</select>
-			<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-		</form>
-			<ul id="topMenu" class="nav pull-right">
-				<?php 
-					if ($show == 0) :
-				 ?>
-					<li class="">
-						<a href="TrangDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Đăng nhập</span></a>
-					</li>
-					<li class="">
-						<a href="TrangDangKy.php" style="padding-right:0"><span class="btn btn-large btn-success">Đăng ký</span></a>
-					</li>
-				<?php else : ?>
-					<li class="">
-						<a style="padding-right:0"><span class="btn btn-large btn-success"><?= $_SESSION["User"]->tenNguoiDung ?></span></a>
-					</li>
-					<li class="">
-						<a href="TrangThongTinCaNhan.php" style="padding-right:0"><span class="btn btn-large btn-success">Thông tin cá nhân</span></a>
-					</li>
-					<li class="">
-						<a href="TrangGioHang.php" style="padding-right:0"><span class="btn btn-large btn-success">Giỏ hàng(<?= get_total_items() ?>)</span></a>
-					</li>
-					<li class="">
-						<a href="ThoatDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Thoát</span></a>
-					</li>	
-				<?php endif; ?>
-			</ul>
+<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</a>
+  <div class="navbar-inner">
+    <a class="brand" href="index.html"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
+		<form class="form-inline navbar-search" method="post" action="products.html" >
+		<input id="srchFld" class="srchTxt" type="text" />
+		  <select class="srchTxt">
+			<option>All</option>
+			<option>CLOTHES </option>
+			<option>FOOD AND BEVERAGES </option>
+			<option>HEALTH & BEAUTY </option>
+			<option>SPORTS & LEISURE </option>
+			<option>BOOKS & ENTERTAINMENTS </option>
+		</select> 
+		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+    </form>
+    <ul id="topMenu" class="nav pull-right">
+	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
+	 <li class=""><a href="normal.html">Delivery</a></li>
+	 <li class=""><a href="contact.html">Contact</a></li>
+	 <li class="">
+	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
+			<h3>Login Block</h3>
+		  </div>
+		  <div class="modal-body">
+			<form class="form-horizontal loginFrm">
+			  <div class="control-group">								
+				<input type="text" id="inputEmail" placeholder="Email">
+			  </div>
+			  <div class="control-group">
+				<input type="password" id="inputPassword" placeholder="Password">
+			  </div>
+			  <div class="control-group">
+				<label class="checkbox">
+				<input type="checkbox"> Remember me
+				</label>
+			  </div>
+			</form>		
+			<button type="submit" class="btn btn-success">Sign in</button>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		  </div>
 	</div>
+	</li>
+    </ul>
+  </div>
 </div>
 </div>
 </div>
 <!-- Header End====================================================================== -->
-
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
+		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-			<li class="subMenu open"><a>Nhà xản xuất</a>
+			<li class="subMenu open"><a> ELECTRONICS [230]</a>
 				<ul>
-					<?php
-	                    $sql = "select * from nhasx";
-	                    $rs = load($sql);
-	                    while ($row = $rs->fetch_assoc()) :
-	                ?>
-						<li><a class="active" href="TrangProducts.php?id=<?= $row["id"] ?>"><i class="icon-chevron-right"></i><?= $row["TenNhaSX"] ?> </a></li>
-					<?php endwhile ?>
+				<li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
 				</ul>
 			</li>
-			<li class="subMenu"><a>Loại máy ảnh</a>
-				<?php
-                    $sql = "select * from loaimayanh";
-                    $rs = load($sql);
-                    while ($row = $rs->fetch_assoc()) :
-                ?>
-					<ul style="display:none">
-						<li><a href="TrangProductsCate.php?id=<?= $row["id"] ?>"><i class="icon-chevron-right"></i><?= $row["tenLoaiMayAnh"] ?></a></li>							
-					</ul>
-				<?php endwhile ?>
+			<li class="subMenu"><a> CLOTHES [840] </a>
+			<ul style="display:none">
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
+			</ul>
 			</li>
+			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+				<ul style="display:none">
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
+				<li><a href="products.html"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
+				<li><a href="products.html"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
+			</ul>
+			</li>
+			<li><a href="products.html">HEALTH & BEAUTY [18]</a></li>
+			<li><a href="products.html">SPORTS & LEISURE [58]</a></li>
+			<li><a href="products.html">BOOKS & ENTERTAINMENTS [14]</a></li>
 		</ul>
+		<br/>
+		  <div class="thumbnail">
+			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
+			<div class="caption">
+			  <h5>Panasonic</h5>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			</div>
+		  </div><br/>
+			<div class="thumbnail">
+				<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+				<div class="caption">
+				  <h5>Kindle</h5>
+				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+				</div>
+			  </div><br/>
+			<div class="thumbnail">
+				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+				<div class="caption">
+				  <h5>Payment Methods</h5>
+				</div>
+			  </div>
 	</div>
-
-
-		<!-- Thêm vào chỗ này -->
-		<?php include_once $page_body_file; ?>
-
+<!-- Sidebar end=============================================== -->
+	<div class="span9">
+    <ul class="breadcrumb">
+		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li class="active">Forget password?</li>
+    </ul>
+	<h3> FORGET YOUR PASSWORD?</h3>	
+	<hr class="soft"/>
+	
+	<div class="row">
+		<div class="span9" style="min-height:900px">
+			<div class="well">
+			<h5>Reset your password</h5><br/>
+			Please enter the email address for your account. A verification code will be sent to you. Once you have received the verification code, you will be able to choose a new password for your account.<br/><br/><br/>
+			<form>
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail1">E-mail address</label>
+				<div class="controls">
+				  <input class="span3"  type="text" id="inputEmail1" placeholder="Email">
+				</div>
+			  </div>
+			  <div class="controls">
+			  <button type="submit" class="btn block">Submit</button>
+			  </div>
+			</form>
 		</div>
 		</div>
-	</div>
+	</div>	
+	
 </div>
-<!-- <!-- Footer ================================================================== -->
+</div>
+</div>
+</div>
+<!-- MainBody End ============================= -->
+<!-- Footer ================================================================== -->
 	<div  id="footerSection">
 	<div class="container">
 		<div class="row">
@@ -241,42 +301,8 @@
 		<a href="themes/css/#" name="pattern20"><img src="themes/switch/images/pattern/pattern20.png" alt="bootstrap business templates"></a>
 		 
 	</div>
-	</div> -->
+	</div>
 </div>
 <span id="themesBtn"></span>
-<script src='https://www.google.com/recaptcha/api.js'></script></body>
-<script type="text/javascript" src="assets/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-<script type="text/javascript">
-	$('.cart-remove').on('click', function() {
-			var id = $(this).data('id');
-			$('#txtDProId').val(id);
-		    $('#txtCmd').val('D');
-		    $('#f').submit();
-		});
-
-		$('.cart-update').on('click', function() {
-
-			var q = $(this).closest('tr').find('.quantity-textfield').val();
-			$('#txtUQ').val(q);
-
-			var id = $(this).data('id');
-			$('#txtDProId').val(id);
-		    $('#txtCmd').val('U');
-
-		    $('#f').submit();
-		});
-
-		// $('.quantity-textfield').TouchSpin({
-	 //        min: 1,
-	 //        max: 69,
-	 //        verticalbuttons: true,
-  //           // step: 1,
-  //           // decimals: 0,
-  //           // boostat: 5,
-  //           // maxboostedstep: 10,
-  //           // postfix: '%'
-	 //    });
-</script>
+</body>
 </html>
