@@ -1,3 +1,33 @@
+<?php 
+	if (isset($_POST["btnCheckOut"])) {
+		$o_Total = $_POST["txtTotal"];
+		$o_UserID = $_SESSION["User"]->id;
+		$o_OrderDate = strtotime("+7 hours", time());
+		$str_OrderDate = date("Y-m-d H:i:s", $o_OrderDate);
+		$sql = "insert into orders(OrderDate, UserID, Total) values('$str_OrderDate', $o_UserID, $o_Total)";
+		$o_ID = write($sql);
+
+		//
+		// order_details
+
+		foreach ($_SESSION["cart"] as $proId => $q) {
+			$sql = "select * from sanpham where id = $proId";
+			$rs = load($sql);
+			$row = $rs->fetch_assoc();
+			$price = $row["giaBan"];
+			$amount = $q * $price;
+			$d_sql = "insert into orderdetails(OrderID, ProID, Quantity, Price, Amount) values($o_ID, $proId, $q, $price, $amount)";
+			write($d_sql);
+		}
+
+		//
+		// clear cart
+		
+		$_SESSION["cart"] = array();
+	}
+ ?>
+
+
 <div class="span9">
 	<div class="col-xs-6 col-sm-9 col-md-9 col-lg-9">
 		<div class="panel panel-default">
@@ -26,14 +56,15 @@
 						foreach ($_SESSION["cart"] as $proId => $q) :
 							$sql = "select * from sanpham where id = $proId";
 							$rs = load($sql);
-							$row = $rs->fetch_assoc();
-							$amount = $q * $row["giaBan"];
+							if ($rs->num_rows > 0) {
+								$row = $rs->fetch_assoc();
+								$amount = $q * $row["giaBan"];
+							}
 							$total += $amount;
 						?>
 						<tr>
 							<td><?= $row["TenSP"] ?></td>
 							<td><?= number_format($row["giaBan"]) ?></td>
-							<!-- <td><?= $q ?></td> -->
 							<td>
 								<input class="quantity-textfield" type="text" name="" id="" value="<?= $q ?>">
 							</td>
@@ -62,14 +93,19 @@
 					<td>&nbsp;</td>
 					<td><b><?= number_format($total) ?></b></td>
 					<td class="text-right">
-						<a class="btn btn-primary" href="#" role="button">
-							<span class="glyphicon glyphicon-bell"></span>
-							Thanh toán
-						</a>
+						<form method="POST" action="">
+							<input type="hidden" name="txtTotal" value="<?= $total ?>">
+							<button name="btnCheckOut" type="submit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-bell"></span>
+								Thanh toán
+							</button>
+						</form>
 					</td>
 					</tfoot>
 				</table>
 			</div>
 		</div>
 	</div>
+
+
 </div>
