@@ -44,13 +44,16 @@
 								<h5><?= $row["TenSP"] ?></h5>
 								<p> </p>
 								<h4 style="text-align:center">
-									<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>"> <i class="icon-zoom-in"></i></a> 
-									<?php 
-										if ($_SESSION["User_ID"] == 1) :
-    								?>
-										<a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> 
-									<?php endif ?>
-									<a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a>
+									<form method="post" action="addItemToCart.inc.php">	
+										<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
+										<?php 
+											if ($_SESSION["User_ID"] == 1) :
+	    								?>
+											<a class="btn">Add to <i class="icon-shopping-cart"></i></a> 
+										<?php endif ?>
+										<a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a>
+										<input type="hidden" name="txtProID" value="<?= $_GET["id"] ?>">
+									</form>
 								</h4>
 							</div>
 						</div>

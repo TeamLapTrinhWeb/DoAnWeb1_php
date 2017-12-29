@@ -66,10 +66,10 @@ require_once "../lib/db.php";
                         <td><?= $row["TenSP"] ?></td>
                         <td><a><img src="../images/<?= $row["TenSP"] ?>" height="80" width="80"/></a></td>
                         <td class="text-right">
-                            <a class="btn btn-default btn-xs" href="TrangAdminProducts_Edit.php?id=<?= $row["id"] ?>" role="button">
+                            <a class="btn btn-default btn-xs" href="TrangAdminProduct_Edit.php?id=<?= $row["id"] ?>" role="button">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a class="btn btn-danger btn-xs" href="Admin_Delete.php?id=<?= $row["id"] ?>" role="button">
+                            <a class="btn btn-danger btn-xs" href="AdminProduct_Delete.php?id=<?= $row["id"] ?>" role="button">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>

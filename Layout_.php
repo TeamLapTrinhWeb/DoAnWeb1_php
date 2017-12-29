@@ -2,6 +2,7 @@
 	ob_start();
 	session_start();
 	require_once "lib/db.php";
+	require_once "cart.inc";
 
 	if (!isset($_SESSION["User_ID"])) {
         $_SESSION["User_ID"] = 0;
@@ -32,6 +33,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css">
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
@@ -70,26 +74,6 @@
 			<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
 		</form>
 			<ul id="topMenu" class="nav pull-right">
-				<?php 
-					if ($show == 0) :
-				 ?>
-					<li class="">
-						<a href="TrangDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Đăng nhập</span></a>
-					</li>
-					<li class="">
-						<a href="TrangDangKy.php" style="padding-right:0"><span class="btn btn-large btn-success">Đăng ký</span></a>
-					</li>
-				<?php else : ?>
-					<li class="">
-						<a style="padding-right:0"><span class="btn btn-large btn-success"><?= $_SESSION["User"]->tenNguoiDung ?></span></a>
-					</li>
-					<li class="">
-						<a href="TrangThongTinCaNhan.php" style="padding-right:0"><span class="btn btn-large btn-success">Thông tin cá nhân</span></a>
-					</li>
-					<li class="">
-						<a href="ThoatDangNhap.php" style="padding-right:0"><span class="btn btn-large btn-success">Thoát</span></a>
-					</li>	
-				<?php endif; ?>
 			</ul>
 	</div>
 </div>
@@ -141,12 +125,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="span3">
-				<h5>ACCOUNT</h5>
-				<a href="login.html">YOUR ACCOUNT</a>
-				<a href="login.html">PERSONAL INFORMATION</a> 
-				<a href="login.html">ADDRESSES</a> 
-				<a href="login.html">DISCOUNT</a>  
-				<a href="login.html">ORDER HISTORY</a>
+				<?php 
+					if ($show == 0) :
+				 ?>
+					<a href="TrangDangNhap.php"><h5>Đăng nhập</h5></a> 
+					<a href="TrangDangKy.php"><h5>Đăng ký</h5></a>
+				<?php else : ?>
+					<h5><?= $_SESSION["User"]->tenNguoiDung ?></h5>
+					<a href="TrangThongTinCaNhan.php">Thông tin cá nhân</a> 
+					<a href="TrangGioHang.php">Giỏ hàng(<?= get_total_items() ?>)</a> 
+					<a href="TrangLichSuMuaHang.php">Lịch sử mua hàng</a>
+					<a href="ThoatDangNhap.php">Thoát</a>  
+				<?php endif; ?>
 			 </div>
 			<div class="span3">
 				<h5>INFORMATION</h5>
@@ -238,4 +228,38 @@
 </div>
 <span id="themesBtn"></span>
 <script src='https://www.google.com/recaptcha/api.js'></script></body>
+<script type="text/javascript" src="assets/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script type="text/javascript">
+	$('.cart-remove').on('click', function() {
+			var id = $(this).data('id');
+			$('#txtDProId').val(id);
+		    $('#txtCmd').val('D');
+		    $('#f').submit();
+		});
+
+		$('.cart-update').on('click', function() {
+
+			var q = $(this).closest('tr').find('.quantity-textfield').val();
+			$('#txtUQ').val(q);
+
+			var id = $(this).data('id');
+			$('#txtDProId').val(id);
+		    $('#txtCmd').val('U');
+
+		    $('#f').submit();
+		});
+
+		$('.quantity-textfield').TouchSpin({
+	        min: 1,
+	        max: 69,
+	        verticalbuttons: true,
+            // step: 1,
+            // decimals: 0,
+            // boostat: 5,
+            // maxboostedstep: 10,
+            // postfix: '%'
+	    });
+</script>
 </html>

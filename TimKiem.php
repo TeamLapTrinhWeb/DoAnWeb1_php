@@ -7,14 +7,34 @@
 					<div class="item active">
 						<ul class="thumbnails">
 							<?php
+								$limit = 6;
+								$current_page = 1;
+								if (isset($_GET["page"])) {
+									$current_page = $_GET["page"];
+								}
+
+								$next_page = $current_page + 1;
+								$prev_page = $current_page - 1;
+
 								$tenSP = $_GET["txtTimKiem"];
 								$tenNSX = $_GET["TenNSX"];
 								$tenLoai = $_GET["TenLMA"];
-								$sql = "select * 
-										from sanpham join nhasx on sanpham.maNSX = nhasx.id join loaimayanh on sanpham.maLoai = loaimayanh.id 
-										where sanpham.TenSP = '$tenSP' and nhasx.TenNhaSX = '$tenNSX' and loaimayanh.tenLoaiMayAnh = '$tenLoai'";
+								$c_sql = "select count(*) as num_rows
+										from sanpham
+										where TenSP like '%$tenSP%'";
+								$c_rs = load($c_sql);
+								$c_row = $c_rs->fetch_assoc();
+								$num_rows = $c_row["num_rows"];
+								$num_pages = ceil($num_rows / $limit);
 
-								
+								if ($current_page < 1 || $current_page > $num_pages) {
+									$current_page = 1;
+								}
+
+								$offset = ($current_page - 1) * $limit;
+								$sql = "select *
+										from sanpham
+										where TenSP like '%$tenSP%' limit $offset, $limit";
 								$rs = load($sql);
 								if ($rs->num_rows > 0) :
 									while ($row = $rs->fetch_assoc()) :
@@ -44,6 +64,13 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="pagination">
+		<ul>
+			<?php for ($i = 1; $i <= $num_pages; $i++) : ?>	
+				<li><a href="TrangTimKiem.php?txtTimKiem=<?php echo"$tenSP"; ?>&TenNSX=<?php echo"$tenNSX"; ?>&TenLMA=<?php echo"$tenLoai"; ?>&page= <?php echo"$i" ?>"><?php echo"$i"; ?></a></li>
+			<?php endfor; ?>
+		</ul>
 	</div>
 </div>
 

@@ -37,9 +37,9 @@
         <br><br>
         <div class="col-md-5 col-md-offset-4">
             <?php if ($show_alert == 1) : ?>
-            <div class="alert alert-success" role="alert">
-                <strong>Bạn đã sữa thành công!</strong>
-            </div>
+                <div class="alert alert-success" role="alert">
+                    <strong>Bạn đã sữa thành công!</strong>
+                </div>
             <?php endif; ?>
             <form method="post" action="" name="frmEdit">
                 <div class="form-group">

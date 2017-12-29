@@ -1,5 +1,16 @@
 <?php 
     require_once "../lib/db.php";
+    if (!session_id()){
+        session_start();
+        if (!isset($_SESSION["dang_nhap_chua"])) {
+            $_SESSION["dang_nhap_chua"] = 0;
+        }
+
+        if ($_SESSION["dang_nhap_chua"] == 0) {
+            header("Location: Admin_login.php");
+        }
+    }
+
  ?>
 
 <div class="container-fluid">

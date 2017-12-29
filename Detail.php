@@ -35,18 +35,20 @@
 			
 			<h3><?= $row["TenSP"]?></h3>
 			<hr class="soft"/>
-			<form class="form-horizontal qtyFrm">
+			<form class="form-horizontal qtyFrm" action="addItemToCart.inc.php" method="post">
 				<div class="control-group">
 					<label class="control-label"><span><?= number_format($row["giaBan"]) ?> vnd</span></label>
+					
 					<div class="controls">
-						<input type="number" class="span1" placeholder="Qty."/>
+						<input type="hidden" name="txtProID" value="<?= $_GET["id"] ?>">
+						<input type="number" class="span1" name="txtQuantity" id="txtQuantity" />
 						<?php 
 							if ($_SESSION["User_ID"] == 1) :
 						?>
-							<button type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ hàng <i class=" icon-shopping-cart"></i></button>
+							<button type="submit" class="btn btn-large btn-primary pull-right" name="btnAddItemToCart"> Thêm vào giỏ hàng <i class=" icon-shopping-cart"></i></button>
 						<?php endif ?>
-
-					</div>
+					</div>	
+					
 				</div>
 			</form>
 		</form>

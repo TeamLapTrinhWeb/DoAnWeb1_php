@@ -78,5 +78,17 @@
 
 	<script type="text/javascript" src="../assets/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#txtMoTa',
+            menubar: false,
+            toolbar1: "styleselect | bold italic | link image | alignleft aligncenter alignright | bullist numlist | fontselect | fontsizeselect | forecolor backcolor",
+            // toolbar2: "",
+            // plugins: 'link image textcolor',
+            //height: 300,
+            // encoding: "xml",
+        });
+    </script>
 </body>
 </html>
