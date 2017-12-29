@@ -25,7 +25,6 @@
     $id = $_GET["id"];
     $sql = "select * from nhasx where id = $id";
     $rs = load($sql);
-    $name = "";
     while ($row = $rs->fetch_assoc()) {
         $name = $row["TenNhaSX"];
     }
@@ -64,9 +63,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(function(){
-    $('txtTenNSX').focus();
-    })
-</script>

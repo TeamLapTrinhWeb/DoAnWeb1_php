@@ -19,7 +19,7 @@
 		<tbody>
 			<?php
 				$id = $_SESSION["User"]->id;
-				$sql = "select * from orderdetails join orders on orderdetails.OrderID = orders.OrderID join sanpham on sanpham.id = orderdetails.ProID where orders.UserID = $id";
+				$sql = "select * from orderdetails join orders on orderdetails.OrderID = orders.OrderID join sanpham on sanpham.id = orderdetails.ProID where orders.UserID = $id order by orderdetails.ID";
 				$rs = load($sql);
 				if ($rs->num_rows > 0) :
 					while ($row = $rs->fetch_assoc()) :
