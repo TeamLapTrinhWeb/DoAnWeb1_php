@@ -1,8 +1,8 @@
 <?php
 	if (!session_id())
-	session_start();
-	if (!isset($_SESSION["cart"])) {
-		$_SESSION["cart"] = array();
+		session_start();
+		if (!isset($_SESSION["cart"])) {
+			$_SESSION["cart"] = array();
 	}
 
 	function add_item($proId, $q) {

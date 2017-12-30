@@ -15,7 +15,7 @@
     </thead>
     <tbody>
      <?php
-        $sql = "select * from orderdetails join orders on orderdetails.OrderID = orders.OrderID join sanpham on sanpham.id = orderdetails.ProID";
+        $sql = "select * from orderdetails join orders on orderdetails.OrderID = orders.OrderID join sanpham on sanpham.id = orderdetails.ProID order by OrderDate desc";
         $rs = load($sql);
         if ($rs->num_rows > 0) :
             while ($row = $rs->fetch_assoc()) :

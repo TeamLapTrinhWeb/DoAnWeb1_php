@@ -11,27 +11,23 @@
 		<thead>
 			<tr>
 				<th>STT</th>
-				<th>Tên sản phẩm</th>
-				<th>Số lượng</th>
-				<th>Giá bán</th>
-				<th>Thành tiền</th>
+				<th>Ngày tháng</th>
+				<th>Tổng tiền</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
 				$i = 0;
 				$id = $_SESSION["User"]->id;
-				$sql = "select * from orderdetails join orders on orderdetails.OrderID = orders.OrderID join sanpham on sanpham.id = orderdetails.ProID where orders.UserID = $id order by orderdetails.ID";
+				$sql = "select * from orders where UserID = $id order by OrderID desc";
 				$rs = load($sql);
 				if ($rs->num_rows > 0) :
 					while ($row = $rs->fetch_assoc()) :
 			?>
 				<tr>
 					<td><?= $i = $i + 1 ?></td>
-					<td><?= $row["TenSP"] ?></td>
-					<td><?= $row["Quantity"] ?></td>
-					<td><?= $row["Price"] ?></td>
-					<td class="label label-important" style="display:block"> <strong><?= $row["Amount"] ?></td>
+					<td><?= $row["OrderDate"] ?></td>
+					<td><?= $row["Total"] ?></td>
 				</tr>
 			<?php
 					endwhile;

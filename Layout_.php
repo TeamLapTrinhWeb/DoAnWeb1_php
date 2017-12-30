@@ -7,7 +7,9 @@
 	if (!isset($_SESSION["User_ID"])) {
         $_SESSION["User_ID"] = 0;
     }
+    
     $show = 1;
+    
     if ($_SESSION["User_ID"] == 0) {
         $show = 0;
     }
@@ -16,7 +18,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootshop online Shopping cart</title>
+    <title>Shop Máy Ảnh Số</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -126,7 +128,7 @@
 		<div class="row">
 			<div class="span3">
 				<?php 
-					if ($show == 0) :
+					if ($_SESSION["User_ID"] == 0) :
 				 ?>
 					<a href="TrangDangNhap.php"><h5>Đăng nhập</h5></a> 
 					<a href="TrangDangKy.php"><h5>Đăng ký</h5></a>
@@ -135,6 +137,7 @@
 					<a href="TrangThongTinCaNhan.php">Thông tin cá nhân</a> 
 					<a href="TrangGioHang.php">Giỏ hàng(<?= get_total_items() ?>)</a> 
 					<a href="TrangLichSuMuaHang.php">Lịch sử mua hàng</a>
+					<a href="TrangDanhSachDonHang.php">Danh sách đơn hàng</a>
 					<a href="ThoatDangNhap.php">Thoát</a>  
 				<?php endif; ?>
 			 </div>
@@ -239,9 +242,21 @@
 		    $('#f').submit();
 		});
 
+		// $('.cart-update').on('click', function() {
+
+		// 	var q = $(this).closest('tr').find('.quantity-textfield').val();
+		// 	$('#txtUQ').val(q);
+
+		// 	var id = $(this).data('id');
+		// 	$('#txtDProId').val(id);
+		//     $('#txtCmd').val('U');
+
+		//     $('#f').submit();
+		// });
+
 		$('.cart-update').on('click', function() {
 
-			var q = $(this).closest('tr').find('.quantity-textfield').val();
+			var q = $(this).closest('tr').find('.Quantity').val();
 			$('#txtUQ').val(q);
 
 			var id = $(this).data('id');

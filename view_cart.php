@@ -15,16 +15,28 @@
 		}
 
 		foreach ($_SESSION["cart"] as $proId => $q) {
-			$sql = "select * from sanpham where id = $proId";
-			$rs = load($sql);
-			$row = $rs->fetch_assoc();
-			$price = $row["giaBan"];
-			$amount = $q * $price;
-			$d_sql = "insert into orderdetails(OrderID, ProID, Quantity, Price, Amount, Status) values($o_ID, $proId, $q, $price, $amount, 'Chưa giao hàng') order by ID";
-			write($d_sql);
+
+			$str_sql = "select soLuongTon from sanpham where id = $proId";
+			$rs = load($str_sql);
+			if ($rs->num_rows > 0) {
+				$row = $rs->fetch_assoc();
+				$Count = $row["soLuongTon"];
+				
+				if ($q <= $Count) {
+					$sql = "select * from sanpham where id = $proId";
+					$rs = load($sql);
+					$row = $rs->fetch_assoc();
+					$price = $row["giaBan"];
+					$amount = $q * $price;
+					$d_sql = "insert into orderdetails(OrderID, ProID, Quantity, Price, Amount, Status) values($o_ID, $proId, $q, $price, $amount, 'Chưa giao hàng')";
+					$update_sql = "update sanpham set soLuongBan = soLuongBan + $q, soLuongTon = soLuongTon - $q where id = $proId";
+					write($d_sql);
+					write($update_sql);
+					$_SESSION["cart"] = array();
+				}
+			}	
 		}
 		
-		$_SESSION["cart"] = array();
 	}
  ?>
 <!-- Sidebar end=============================================== -->
@@ -53,33 +65,33 @@
 		<tbody>
 			<?php
 			$total = 0;
-			foreach ($_SESSION["cart"] as $proId => $q) :
-				$sql = "select * from sanpham where id = $proId";
-				$rs = load($sql);
-				if ($rs->num_rows > 0) {
-					$row = $rs->fetch_assoc();
-					$amount = $q * $row["giaBan"];
-				}
-				$total += $amount;
+				foreach ($_SESSION["cart"] as $proId => $q) :
+					$sql = "select * from sanpham where id = $proId";
+					$rs = load($sql);
+					if ($rs->num_rows > 0) {
+						$row = $rs->fetch_assoc();
+						$amount = $q * $row["giaBan"];
+					}
+					$total += $amount;
 			?>
-			<tr>
-				<td><?= $row["TenSP"] ?></td>
-				<td><?= number_format($row["giaBan"]) ?></td>
-				<td>
-					<input class="quantity-textfield" type="text" name="" id="" value="<?= $q ?>">
-				</td>
-				<td><?= number_format($amount) ?></td>
-				<td class="text-right">
-					<a class="btn btn-xs btn-danger cart-remove" data-id="<?= $proId ?>" href="javascript:;" role="button">
-						<i class="fa fa-times" aria-hidden="true"></i>
-					</a>
-					<a class="btn btn-xs btn-primary cart-update" data-id="<?= $proId ?>" href="javascript:;" role="button">
-						<i class="fa fa-check" aria-hidden="true"></i>
-					</a>
-				</td>
-			</tr>
+				<tr>
+					<td><?= $row["TenSP"] ?></td>
+					<td><?= number_format($row["giaBan"]) ?></td>
+					<td>
+						<input class="quantity-textfield" name="" id="" value="<?= $q ?>">
+					</td>
+					<td><?= number_format($amount) ?></td>
+					<td class="text-right">
+						<a class="btn btn-xs btn-danger cart-remove" data-id="<?= $proId ?>" href="javascript:;" role="button">
+							<i class="fa fa-times" aria-hidden="true"></i>
+						</a>
+						<a class="btn btn-xs btn-primary cart-update" data-id="<?= $proId ?>" href="javascript:;" role="button">
+							<i class="fa fa-check" aria-hidden="true"></i>
+						</a>
+					</td>
+				</tr>
 			<?php
-			endforeach;
+				endforeach;
 			?>
 		</tbody>
 		<tfoot>

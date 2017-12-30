@@ -6,6 +6,7 @@ if (isset($_SESSION["User_ID"])) {
 
 	// xoá cookie auth_user_id
 	setcookie("auth_user_id", "", time() - 3600);
+	$_SESSION["cart"] = array();
 }
 
 header('Location: TrangDangNhap.php');

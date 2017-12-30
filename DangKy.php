@@ -30,7 +30,7 @@ if(isset($_POST["btnSubmit"]))
 				
 			if ($rs->num_rows > 0) 
 			{
-					$show_alert = 2;
+				$show_alert = 2;
 			}else
 			{
 				$Pass = $_POST["txtPassword"];
@@ -39,8 +39,9 @@ if(isset($_POST["btnSubmit"]))
 				$Month = substr($_POST["thang"], 6);
 				$Year = $_POST["nam"];
 				$Date = $Year."-".$Month."-".$Day;
-				
-				$sql = "insert into nguoidung(tenNguoiDung, matKhau, DOB, quyen) values('$User', '$enc_Pass', '$Date', '0')";
+				$DiaChi = $_POST["txtDiaChi"];
+				$SDT = $_POST["txtSDT"];
+				$sql = "insert into nguoidung(tenNguoiDung, matKhau, DOB, DiaChi, SDT, quyen) values('$User', '$enc_Pass', '$Date', '$DiaChi', $SDT, 0)";
 				load($sql);
 				
 				$show_alert = 1;
@@ -65,34 +66,39 @@ if(isset($_POST["btnSubmit"]))
 		<?php
 			if ($show_recaptcha == 2) :
 		?>
-		<div class="alert alert-danger" role="alert">Bạn chưa check recaptcha</div>
+			<div class="alert alert-danger" role="alert">Bạn chưa check recaptcha</div>
 		<?php endif; ?>
+		
 		<?php
 			if ($show_alert == 1) :
 		?>
-		<div class="alert alert-success" role="alert">Bạn đã đăng ký thành công</div>
+			<div class="alert alert-success" role="alert">Bạn đã đăng ký thành công</div>
 		<?php endif; ?>
+		
 		<?php
 			if ($show_alert == 2) :
 		?>
-		<div class="alert alert-danger">
-			<strong>Username đã tồn tại!</strong>
-		</div>
+			<div class="alert alert-danger">
+				<strong>Username đã tồn tại!</strong>
+			</div>
 		<?php endif; ?>
+		
 		<?php
 			if ($show_alert == 3) :
 		?>
-		<div class="alert alert-danger">
-			<strong>Username trống hoặc dài quá 255 ký tự!</strong>
-		</div>
+			<div class="alert alert-danger">
+				<strong>Username trống hoặc dài quá 255 ký tự!</strong>
+			</div>
 		<?php endif; ?>
+		
 		<?php
 			if ($show_alert == 4) :
 		?>
-		<div class="alert alert-danger">
-			<strong>Password trống hoặc ít dưới 6 ký tự!</strong>
-		</div>
+			<div class="alert alert-danger">
+				<strong>Password trống hoặc ít dưới 6 ký tự!</strong>
+			</div>
 		<?php endif; ?>
+		
 		<form class="form-horizontal" action="" name="frmDangKy" method="post">
 			<h4>Thông tin cá nhân</h4>
 			<div class="control-group">
@@ -114,23 +120,35 @@ if(isset($_POST["btnSubmit"]))
 						<?php
 							for ($i=1; $i < 32; $i++) :
 						?>
-						<option> <?= $i ?> &nbsp;&nbsp;</option>
+							<option> <?= $i ?> &nbsp;&nbsp;</option>
 						<?php endfor; ?>
 					</select>
 					<select class="span2" name="thang">
 						<?php
 							for ($i=1; $i < 13; $i++) :
 						?>
-						<option>tháng <?= $i ?> &nbsp;&nbsp;</option>
+							<option>tháng <?= $i ?> &nbsp;&nbsp;</option>
 						<?php endfor; ?>
 					</select>
 					<select class="span1" name="nam">
 						<?php
 							for ($i=2017; $i > 1950; $i--) :
 						?>
-						<option> <?= $i ?> &nbsp;&nbsp;</option>
+							<option> <?= $i ?> &nbsp;&nbsp;</option>
 						<?php endfor; ?>
 					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputPassword1">Địa chỉ<sup>*</sup></label>
+				<div class="controls">
+					<input type="text" name="txtDiaChi">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputPassword1">SDT<sup>*</sup></label>
+				<div class="controls">
+					<input type="text" name="txtSDT">
 				</div>
 			</div>
 			<div class="control-group">
