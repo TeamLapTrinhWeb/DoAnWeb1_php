@@ -48,7 +48,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-lg-offset-2">
+         <div class="col-md-12 col-lg-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Chỉnh sủa sản phẩm</h3>
@@ -120,14 +120,11 @@
                         </div> -->
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <a class="btn btn-primary" href="TrangAdminProducts.php" role="button" title="Về thôi">
-                                    <span class="glyphicon glyphicon-backward"></span>
-                                </a>
                                 <button name="btnEdit" type="submit" class="btn btn-success">
                                     <span class="glyphicon glyphicon-ok"></span>
                                     Chỉnh sửa
                                 </button>
-                                <button name="btnDelete" type="submit" class="btn btn-success">
+                                <button name="btnDelete" type="submit" class="btn btn-danger">
                                     <span class="glyphicon glyphicon-ok"></span>
                                     Xóa luôn
                                 </button>

@@ -4,7 +4,7 @@
 		if (!isset($_SESSION["User_ID"])) {
 			$_SESSION["User_ID"] = 0;
 	}
-    
+    $show_alert = 0;
     if ($_SESSION["User_ID"] == 1 && isset($_POST["btnUpdate"])) {
     	$Username = $_POST["txtUsername"];
         $Password = $_POST["txtPassword"];
@@ -16,7 +16,7 @@
         $sql = "update nguoidung set tenNguoiDung = '$Username', matKhau = '$enc_Pass', DOB = '$DOB', DiaChi = '$DiaChi', SDT = $SDT where id = $id";
         load($sql);
         
-        $show = 1;
+        $show_alert = 1;
         
         $_SESSION["User"]->tenNguoiDung = $Username;
         $_SESSION["User"]->matKhau = $enc_Pass;
@@ -31,13 +31,13 @@
 		<li><a href="TrangIndex.php">Home</a> <span class="divider">/</span></li>
 	</ul>
 	<div class="well">
-		<!-- <?php
-			if ($show == 1) :
-		?>
-			<div class="alert alert-success" role="alert">Cập nhật thành công</div>
-		<?php else: ?>
+		<!-- <?php if ($show_alert == 1) : ?>
+            <div class="alert alert-success" role="alert">
+                <strong>Bạn đã cập nhật thành công</strong>
+            </div>
+        <?php else: ?>
 			<div class="alert alert-danger" role="alert">Không cập nhật được thông tin</div>
-		<?php endif; ?> -->
+        <?php endif; ?> -->
 		<form class="form-horizontal" method="post">
 			<h4>Thông tin cá nhân</h4>
 			<div class="control-group">

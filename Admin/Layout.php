@@ -76,53 +76,56 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a href="TrangAdmin.php">
-                            Danh sách các nhà sản xuất
-                        </a>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Danh mục</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-heading">
+                            <a href="TrangAdmin.php">
+                                Danh sách các nhà sản xuất
+                            </a>
+                        </div>
+                        <div class="panel-heading">
+                            <a href="TrangAdmin_Add.php">
+                                Thêm nhà sản xuất
+                            </a>
+                        </div>
+                        <div class="panel-heading">
+                            <a href="TrangAdminCate.php">
+                                Danh sách các loại máy ảnh
+                            </a>
+                        </div>
+                        <div class="panel-heading">
+                            <a href="TrangAdmin_Add_Cate.php">
+                                Thêm loại máy ảnh
+                            </a>
+                        </div>
+                        <div class="panel-heading">
+                            <a href="TrangAdminProducts.php">
+                                Danh sách các sản phẩm
+                            </a>
+                        </div>
+                        <div class="panel-heading">
+                            <a href="TrangAdmin_Add_Products.php">
+                                Thêm sản phẩm
+                            </a>
+                        </div>
+                        <div class="panel-heading">
+                            <a href="TrangQuanLyDonHang.php">
+                                Quản lý đơn hàng
+                            </a>
+                        </div>
+                        </div>
                     </div>
-                    <div class="panel-heading">
-                        <a href="TrangAdmin_Add.php">
-                            Thêm nhà sản xuất
-                        </a>
-                    </div>
-                    <div class="panel-heading">
-                        <a href="TrangAdminCate.php">
-                            Danh sách các loại máy ảnh
-                        </a>
-                    </div>
-                    <div class="panel-heading">
-                        <a href="TrangAdmin_Add_Cate.php">
-                            Thêm loại máy ảnh
-                        </a>
-                    </div>
-                    <div class="panel-heading">
-                        <a href="TrangAdminProducts.php">
-                            Danh sách các sản phẩm
-                        </a>
-                    </div>
-                    <div class="panel-heading">
-                        <a href="TrangAdmin_Add_Products.php">
-                            Thêm sản phẩm
-                        </a>
-                    </div>
-                     <div class="panel-heading">
-                        <a href="TrangQuanLyDonHang.php">
-                            Quản lý đơn hàng
-                        </a>
-                    </div>
-                </div>
+                </div>        
             </div>
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                 <?php include_once $page_body_file; ?>            
             </div>
         </div>
     </div>
-
-	
-	
-
 	<script type="text/javascript" src="../assets/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../assets/tinymce/tinymce.min.js"></script>
