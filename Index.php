@@ -15,7 +15,7 @@
 							<li class="span2">
 								<div class="thumbnail">
 									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"></a>
 									<div class="caption">
 										<h5><?= $row["TenSP"] ?></h5>
 										<h4>
@@ -52,7 +52,7 @@
 							<li class="span2">
 								<div class="thumbnail">
 									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 									<div class="caption">
 										<h5><?= $row["TenSP"] ?></h5>
 										<h4>
@@ -102,7 +102,7 @@
 							<li class="span2">
 								<div class="thumbnail">
 									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 									<div class="caption">
 										<h5><?= $row["TenSP"] ?></h5>
 										<h4>
@@ -139,7 +139,7 @@
 							<li class="span2">
 								<div class="thumbnail">
 									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 									<div class="caption">
 										<h5><?= $row["TenSP"] ?></h5>
 										<h4>
@@ -189,7 +189,7 @@
 							<li class="span2">
 								<div class="thumbnail">
 									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 									<div class="caption">
 										<h5><?= $row["TenSP"] ?></h5>
 										<h4>
@@ -226,7 +226,7 @@
 							<li class="span2">
 								<div class="thumbnail">
 									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 									<div class="caption">
 										<h5><?= $row["TenSP"] ?></h5>
 										<h4>
