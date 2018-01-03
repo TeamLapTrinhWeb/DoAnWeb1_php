@@ -19,7 +19,7 @@
         <div class="col-md-12 col-lg-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Sản phẩm mới</h3>
+                    <h3 class="panel-title">Thêm loại máy ảnh</h3>
                 </div>
                 <div class="panel-body">
                     <?php if ($show_alert == 1) : ?>

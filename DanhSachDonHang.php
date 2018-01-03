@@ -4,7 +4,7 @@
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active"> SHOPPING CART</li>
 	</ul>
-	<h3>  Lịch sử mua hàng<a href="TrangIndex.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Tiếp tục mua hàng </a></h3>
+	<h3>Danh sách đơn hàng<a href="TrangIndex.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Tiếp tục mua hàng </a></h3>
 	<hr class="soft"/>
 	
 	<table class="table table-bordered">

@@ -13,8 +13,8 @@
 				while ($row = $rs->fetch_assoc()) :
 		?>
 		<div id="gallery" class="span3">
-			<a href="images/<?= $row["TenSP"] ?>" title="Fujifilm FinePix S2950 Digital Camera">
-				<img src="images/<?= $row["TenSP"] ?>" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
+			<a href="images/<?= $row["TenSP"] ?>">
+				<img src="images/<?= $row["TenSP"] ?>" style="width:100%"/>
 			</a>
 			<div id="differentview" class="moreOptopm carousel slide">
 				<div class="carousel-inner">
