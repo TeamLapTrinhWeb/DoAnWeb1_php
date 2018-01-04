@@ -13,21 +13,21 @@
 				while ($row = $rs->fetch_assoc()) :
 		?>
 		<div id="gallery" class="span3">
-			<a href="images/<?= $row["TenSP"] ?>">
-				<img src="images/<?= $row["TenSP"] ?>" style="width:100%"/>
-			</a>
+			
+				<img src="images/<?= $id ?>/main" style="width:100%"/>
+			
 			<div id="differentview" class="moreOptopm carousel slide">
 				<div class="carousel-inner">
 					<div class="item active">
-						<a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
-						<a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
-						<a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
+						<a href="images/<?= $id ?>/1"> <img style="width:29%" src="images/<?= $id ?>/1" alt=""/></a>
+						<a href="images/<?= $id ?>/2"> <img style="width:29%" src="images/<?= $id ?>/2" alt=""/></a>
+						<a href="images/<?= $id ?>/main" > <img style="width:29%" src="images/<?= $id ?>/main" alt=""/></a>
 					</div>
-					<div class="item">
-						<a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
-						<a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
-						<a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
-					</div>
+					<!-- <div class="item">
+						<a href="images/<?= $id ?>/main" > <img style="width:29%" src="images/<?= $id ?>/main" alt=""/></a>
+						<a href="images/<?= $id ?>/1"> <img style="width:29%" src="images/<?= $id ?>/1" alt=""/></a>
+						<a href="images/<?= $id ?>/2"> <img style="width:29%" src="images/<?= $id ?>/2" alt=""/></a>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -112,7 +112,7 @@
 														<li class="span2">
 															<div class="thumbnail">
 																<i class="tag"></i>
-																<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+																<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 																<div class="caption">
 																	<h5><?= $row["TenSP"] ?></h5>
 																	<h4>
@@ -163,7 +163,7 @@
 														<li class="span2">
 															<div class="thumbnail">
 																<i class="tag"></i>
-																<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+																<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 																<div class="caption">
 																	<h5><?= $row["TenSP"] ?></h5>
 																	<h4>
