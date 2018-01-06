@@ -41,13 +41,16 @@
 							<div class="caption">
 							<h5><?= $row["TenSP"] ?></h5>
 							<h4 style="text-align:center">
-								<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
-								<?php 
-									if ($_SESSION["User_ID"] == 1) :
-								?>
-									<a class="btn" href="#">Thêm <i class="icon-shopping-cart"></i></a> 
-								<?php endif ?>
-								<a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a>
+								<form class="form-horizontal qtyFrm" action="addItemToCart.inc.php" method="post">
+									<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
+									<?php 
+										if ($_SESSION["User_ID"] == 1) :
+    								?>
+    									<input type="hidden" name="txtProID" value="<?= $row["id"] ?>">
+										<button type="submit" class="btn btn-block btn-primary pull-right" name="btnAddToTo"> Thêm <i class=" icon-shopping-cart"></i></button>
+									<?php endif ?>
+									<a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a>
+								</form>
 							</h4>
 							</div>
 						</div>

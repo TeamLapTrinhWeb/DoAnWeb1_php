@@ -41,18 +41,17 @@
 						<div class="thumbnail">
 							<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["id"] ?>/main"/></a>
 							<div class="caption">
-								<h5><?= $row["TenSP"] ?></h5>
-								<p> </p>
+								<h5><?= $row["TenSP"] ?></h5>								
 								<h4 style="text-align:center">
-									<form method="post" action="addItemToCart.inc.php">	
+									<form class="form-horizontal qtyFrm" action="addItemToCart.inc.php" method="post">
 										<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
 										<?php 
 											if ($_SESSION["User_ID"] == 1) :
 	    								?>
-											<a class="btn">Add to <i class="icon-shopping-cart"></i></a> 
+	    									<input type="hidden" name="txtProID" value="<?= $row["id"] ?>">
+											<button type="submit" class="btn btn-block btn-primary pull-right" name="btnAddTo"> Thêm <i class=" icon-shopping-cart"></i></button>
 										<?php endif ?>
 										<a class="btn btn-primary" href="#"><?= number_format($row["giaBan"]) ?> vnd</a>
-										<input type="hidden" name="txtProID" value="<?= $_GET["id"] ?>">
 									</form>
 								</h4>
 							</div>
