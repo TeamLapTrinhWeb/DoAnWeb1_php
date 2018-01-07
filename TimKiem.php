@@ -39,13 +39,15 @@
 								if ($rs->num_rows > 0) :
 									while ($row = $rs->fetch_assoc()) :
 							?>
-							<li class="span2">
+							<li class="span3">
 								<div class="thumbnail">
-									<i class="tag"></i>
-									<a href="TrangDetail.php?id=<?= $row["id"] ?>"><img src="images/<?= $row["TenSP"] ?>"/></a>
+									<img src="images/<?= $row["id"] ?>/main"/>
 									<div class="caption">
-										<h5><?= $row["TenSP"] ?></h5>
-										<h4><a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">VIEW</a> <span class="pull-right"><?= number_format($row["giaBan"]) ?> vnd</span></h4>
+										<h5><?= $row["TenSP"] ?></h5>								
+										<h4 style="text-align:center">
+											<a class="btn" href="TrangDetail.php?id=<?= $row["id"] ?>">Chi tiết</a> 
+											<p><?= number_format($row["giaBan"]) ?> vnd</p>
+										</h4>
 									</div>
 								</div>
 							</li>

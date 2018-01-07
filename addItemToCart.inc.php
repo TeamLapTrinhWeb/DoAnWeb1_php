@@ -12,3 +12,23 @@
 		    header("location: $url");
 		}
 	}
+	if (isset($_POST["btnAddTo"])) {
+		$proId = $_POST["txtProID"];
+		
+		add_item($proId, 1);
+
+		if (isset($_SERVER['HTTP_REFERER'])) {
+		    $url = $_SERVER['HTTP_REFERER'];
+		    header("location: $url");
+		}
+	}
+	if (isset($_POST["btnAddToTo"])) {
+		$proId = $_POST["txtProID"];
+		
+		add_item($proId, 1);
+
+		if (isset($_SERVER['HTTP_REFERER'])) {
+		    $url = $_SERVER['HTTP_REFERER'];
+		    header("location: $url");
+		}
+	}
